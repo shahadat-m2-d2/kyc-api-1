@@ -33,3 +33,10 @@ Route::view("contact", "/contact");
 Route::get("user/{id}", [UserController::class, 'show']);
 
 Route::get("api/country_list", [UserController::class, 'country_list']);
+
+
+
+//Route::view("users", "/users");
+Route::get("users", [UserController::class, 'index']);
+Route::get("customers", [UserController::class, 'customers']);
+

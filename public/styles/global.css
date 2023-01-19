@@ -1,0 +1,8 @@
+/* Import basic styling  */
+@import "style.css";
+
+/* Import styling for effect on login page */
+@import "login-effect.css";
+
+/* Import styling for icons  */
+@import "icons.css";

@@ -43,12 +43,16 @@ class kycAPIController extends Controller
     function kyc_user($id=null){
         if($id == null){
             $data = DB::table('user')
-            ->select('user.*')
+            ->select('user.*','userrole.*','role.*')
+            ->join('userrole','userrole.userID','=','user.userID')
+            ->join('role','role.roleID','=','userrole.roleID')
             ->get();
         }else{
             $data = DB::table('user') 
             ->where('userID', $id)
-            ->select('user.*')
+            ->select('user.*','userrole.*','role.*')
+            ->join('userrole','userrole.userID','=','user.userID')
+            ->join('role','role.roleID','=','userrole.roleID')
             ->get();
         }  
         return $data;
@@ -234,11 +238,16 @@ class kycAPIController extends Controller
     function add_user(Request $req){
         $data                   = ["status"=>"0", "message"=>""];
     
-        $userName           = $req->userName;
-        $OrganisationID     = $req->OrganisationID;
         $userFirstName      = $req->userFirstName;
         $userLastName       = $req->userLastName;
+        $roleID             = $req->roleID;
+        $email              = $req->email;
+        $phoneNumber        = $req->phoneNumber;
+        $mobileNumber       = $req->mobileNumber;
+
+        $userName           = $req->userName;
         $userPassword       = $req->userPassword;
+        $OrganisationID     = $req->OrganisationID;
         $modifiedBy         = $req->modifiedBy;
         $modifiedDateTime   = date("Y-m-d H:i:s");
 
@@ -251,10 +260,14 @@ class kycAPIController extends Controller
             $data["message"]            = "Username already exist!";
         }else{
 
-            $insertdata                 = array('userName'=>$userName,"userFirstName"=>$userFirstName,"userLastName"=>$userLastName,"userPassword"=>$userPassword,"OrganisationID"=>$OrganisationID,"modifiedDateTime"=>$modifiedDateTime,"modifiedBy"=>$modifiedBy);
+            $insertdata                 = array("userFirstName"=>$userFirstName,"userLastName"=>$userLastName,"email"=>$email,"phoneNumber"=>$phoneNumber,"mobileNumber"=>$mobileNumber,"userName"=>$userName,"userPassword"=>$userPassword,"OrganisationID"=>$OrganisationID,"modifiedDateTime"=>$modifiedDateTime,"modifiedBy"=>$modifiedBy);
             $insert_sql                 = DB::table('user')->insert($insertdata);
             $lastInsertId               = DB::getPdo()->lastInsertId();
             if($insert_sql){
+
+                $insertdata2           = array("userID"=>$lastInsertId,"roleID"=>$roleID,"modifiedDateTime"=>$modifiedDateTime,"modifiedBy"=>$modifiedBy);
+                $insert_sql2           = DB::table('userrole')->insert($insertdata2);
+
                 $data["status"]         = 1;
                 $data["message"]        = "Data has been saved!";
                 $data["lastInsertId"]   = $lastInsertId;
@@ -269,10 +282,13 @@ class kycAPIController extends Controller
         $data               = ["status"=>"0", "message"=>""];
     
         $userID             = $req->userID;
-        $userName           = $req->userName;
-        $OrganisationID     = $req->OrganisationID;
         $userFirstName      = $req->userFirstName;
         $userLastName       = $req->userLastName;
+        $roleID             = $req->roleID;
+        $email              = $req->email;
+        $phoneNumber        = $req->phoneNumber;
+        $mobileNumber       = $req->mobileNumber;
+        $OrganisationID     = $req->OrganisationID;
         $modifiedBy         = $req->modifiedBy;
         $modifiedDateTime   = date("Y-m-d H:i:s");
 
@@ -283,9 +299,13 @@ class kycAPIController extends Controller
         $countOfRow                     = $check_exist->count();
         if( $countOfRow > 0 ){
             
-            $updatedata                 = array('userName'=>$userName,"userFirstName"=>$userFirstName,"userLastName"=>$userLastName,"OrganisationID"=>$OrganisationID,"modifiedDateTime"=>$modifiedDateTime,"modifiedBy"=>$modifiedBy);
+            $updatedata                 = array("userFirstName"=>$userFirstName,"userLastName"=>$userLastName,"email"=>$email,"phoneNumber"=>$phoneNumber,"mobileNumber"=>$mobileNumber,"OrganisationID"=>$OrganisationID,"modifiedDateTime"=>$modifiedDateTime,"modifiedBy"=>$modifiedBy);
             $updated_rows               = DB::table('user')->where('userID', $userID)->update($updatedata);
             if($updated_rows > 0){
+
+                $updatedata2            = array("roleID"=>$roleID,"modifiedDateTime"=>$modifiedDateTime,"modifiedBy"=>$modifiedBy);
+                $updated_rows2          = DB::table('userrole')->where('userID', $userID)->update($updatedata2);
+
                 $data["status"]         = 1;
                 $data["message"]        = "Data has been updated!";
                 $data["updated_rows"]   = $updated_rows;
@@ -309,6 +329,7 @@ class kycAPIController extends Controller
         if( $countOfRow > 0 ){
             $deleted_rows               = DB::table('user')->where('userID', $userID)->delete();
             if($deleted_rows > 0){
+                $deleted_rows2          = DB::table('userrole')->where('userID', $userID)->delete();
                 $data["status"]         = 1;
                 $data["message"]        = "Data has been deleted!";
                 $data["deleted_rows"]   = $deleted_rows;
