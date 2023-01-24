@@ -5,7 +5,7 @@
     <div class="widget-row">
         <div class="page-intro">
             <span class="page-title">Klanten</span>
-            <span class="page-desc">Hier zie je een overzicht van alle klanten</span>
+            <span class="page-desc">Hier zie je een overzicht van alle klanten @php echo json_encode($clients);@endphp</span>
         </div>
     </div>
 
@@ -29,9 +29,29 @@
                         <th class="th-sort th-center">Controles</th>
                     </tr>
                 </thead>
-
                 <tbody>
-
+                @foreach( $clients as $clients_key => $clients_value )
+                    <!--  Row with Working Links -->
+                    <tr>
+                        <td href="#modalClientView" class="modal-button client-view-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}" data-actorcreationdatetime="{{ $clients_value->actorCreationDateTime }}" data-actordatetimelastupdated="{{ $clients_value->actorDateTimeLastUpdated }}" data-actorcompanyregistrationnumber="{{ $clients_value->actorCompanyRegistrationNumber }}" data-actorvatregistrationnumber="{{ $clients_value->actorVATRegistrationNumber }}" data-actortypeid="{{ $clients_value->actorTypeID }}" data-actorstatusid="{{ $clients_value->actorStatusID }}" data-organisationid="{{ $clients_value->OrganisationID }}" data-actoryypedescription="{{ $clients_value->actorTypeDescription }}" data-actorstatusdescription="{{ $clients_value->actorStatusDescription }}" >{{ $clients_value->actorName }}</td>
+                        <td>{{ $clients_value->actorCreationDateTime }}</td>
+                        <td>{{ $clients_value->actorDateTimeLastUpdated }}</td>
+                        <td class="action">
+                            <a href="#modalClientEdit" class="modal-button client-edit-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}" data-actorcreationdatetime="{{ $clients_value->actorCreationDateTime }}" data-actordatetimelastupdated="{{ $clients_value->actorDateTimeLastUpdated }}" data-actorcompanyregistrationnumber="{{ $clients_value->actorCompanyRegistrationNumber }}" data-actorvatregistrationnumber="{{ $clients_value->actorVATRegistrationNumber }}" data-actortypeid="{{ $clients_value->actorTypeID }}" data-actorstatusid="{{ $clients_value->actorStatusID }}" data-organisationid="{{ $clients_value->OrganisationID }}" data-actoryypedescription="{{ $clients_value->actorTypeDescription }}" data-actorstatusdescription="{{ $clients_value->actorStatusDescription }}" >
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a href="#modalUserDelete" class="modal-button client-delete-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </td>
+                        <td class="controls">
+                            <img title="Initiële Controle" src="icons/IC-icon--filled.svg" class="control control-success modal-button" href="#modalICSuccess" width="30" height="30">
+                            <img title="Doorlopende Controle" src="icons/DC-icon--filled.svg" class="control control-success modal-button" href="#modalDCSuccess" width="30" height="30">
+                        </td>
+                    </tr>
+                    <!--  END Row with Working Links --> 
+                @endforeach
+                <!-- 
                     <tr>
                         <td class="modal-button" href="#modalClientView">Skipdemakelaar</td>
                         <td>21-05-2022</td>
@@ -71,7 +91,8 @@
                             <img title="Initiële Controle" src="icons/IC-icon--filled.svg" class="control control-error modal-button" href="#modalICError" width="30" height="30">
                             <img title="Doorlopende Controle" src="icons/DC-icon--filled.svg" class="control control-error modal-button" href="#modalDCError" width="30" height="30">
                         </td>
-                    </tr>
+                    </tr> 
+                -->
                 </tbody>
             </table>
 
@@ -325,6 +346,16 @@
 
 
     <div id="modalClientView" class="modal">
+        $('#actorID_to_view').val(actorID);
+        $('#view_actorName').html(actorName);
+        $('#view_actorCreationDateTime').html(actorCreationDateTime);
+        $('#view_actorDateTimeLastUpdated').html(actorDateTimeLastUpdated);
+        $('#view_actorCompanyRegistrationNumber').html(actorCompanyRegistrationNumber);
+        $('#view_actorVATRegistrationNumber').html(actorVATRegistrationNumber);
+        $('#view_actorTypeDescription').html(actorTypeDescription);
+        $('#view_actorStatusDescription').html(actorStatusDescription); 
+
+
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -336,29 +367,30 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <span class="form-section--title">Bedrijfsgegevens</span>
+                    <input type="hidden" id="actorID_to_view" value="0">
+                    <span class="form-section--title">Company details</span>
 
                     <div class="form-field">
-                        <label>Bedrijf</label>
-                        <span>Skipdemakelaar</span>
+                        <label>Company</label>
+                        <span id="view_actorStatusDescription">Shipbroker</span>
                     </div>
                     <div class="form-field">
-                        <label>BTW nummer</label>
-                        <span>01234567890</span>
+                        <label>VAT number</label>
+                        <span id="view_actorVATRegistrationNumber">---</span>
                     </div>
                     <div class="form-field">
-                        <label>KVK nummer</label>
+                        <label>Chamber of Commerce number</label>
                         <span>1234567890B01</span>
                     </div>
 
-                    <span class="form-section--title">Adres</span>
+                    <span class="form-section--title">Address</span>
 
                     <div class="form-field">
-                        <label>Straat</label>
+                        <label>Street</label>
                         <span>Escudostraat</span>
                     </div>
                     <div class="form-field">
-                        <label>Huisnummer</label>
+                        <label>House number</label>
                         <span>2</span>
                     </div>
                     <div class="form-field">
@@ -366,22 +398,22 @@
                         <span>2991XV</span>
                     </div>
                     <div class="form-field">
-                        <label>Plaats</label>
+                        <label>Place</label>
                         <span>Barendrecht</span>
                     </div>
                     <div class="form-field">
                         <label>Land</label>
-                        <span>Nederland</span>
+                        <span>The Netherlands</span>
                     </div>
 
-                    <span class="form-section--title">Contactgegevens</span>
+                    <span class="form-section--title">Contact details</span>
 
                     <div class="form-field">
-                        <label>Voornaam</label>
+                        <label>First Name</label>
                         <span>Stanley</span>
                     </div>
                     <div class="form-field">
-                        <label>Achternaam</label>
+                        <label>Last name</label>
                         <span>Messi</span>
                     </div>
 
@@ -390,14 +422,17 @@
                         <span>stanley.messi@skip.com</span>
                     </div>
                     <div class="form-field">
-                        <label>Telefoonnummer</label>
+                        <label>phone number</label>
                         <span>0101234567</span>
                     </div>
                     <div class="form-field">
-                        <label>Mobielnummer</label>
+                        <label>Mobile number</label>
                         <span>0612345678</span>
                     </div>
                 </form>
+
+
+
             </div>
         </div>
     </div>
@@ -1310,32 +1345,60 @@
     });
 </script>
 <script type="text/javascript">
-    $(document).on('click', '.user-view-button', function(e) {
+    $(document).on('click', '.client-view-button', function(e) {
 
-        let userID = $(this).data('userid');
-        let userFirstName = $(this).data('userfirstname');
-        let userLastName = $(this).data('userlastname');
-        let roleID = $(this).data('roleid');
-        let email = $(this).data('email');
-        let phoneNumber = $(this).data('phonenumber');
-        let mobileNumber = $(this).data('mobilenumber');
-        let OrganisationID = $(this).data('organisationid');
-        let modifiedBy = $(this).data('modifiedby');
+        let actorID                         = $(this).data('actorid');
+        let actorName                       = $(this).data('actorname');
+        let actorCreationDateTime           = $(this).data('actorcreationdatetime');
+        let actorDateTimeLastUpdated        = $(this).data('actordatetimelastupdated');
+        let actorCompanyRegistrationNumber  = $(this).data('actorcompanyregistrationnumber');
+        let actorVATRegistrationNumber      = $(this).data('actorvatregistrationnumber');
+
+        let actorTypeID                     = $(this).data('actortypeid');
+        let actorStatusID                   = $(this).data('actorstatusid');
+        let OrganisationID                  = $(this).data('organisationid');
+        let actorTypeDescription            = $(this).data('actortypedescription');
+        let actorStatusDescription          = $(this).data('actorstatusdescription');
+ 
+        let actorContactID                  = $(this).data('actorContactID');
+        let contactTypeID                   = $(this).data('contactTypeID');
+        let actorContactFirstName           = $(this).data('actorContactFirstName');
+        let actorContactLastName            = $(this).data('actorContactLastName');
+        let actorContactEmail               = $(this).data('actorContactEmail');
+  
+        let actorContactPhone                  = $(this).data('actorContactPhone');
+        let actorContactMobile                   = $(this).data('actorContactMobile');
+        let actorContactURL           = $(this).data('actorContactURL');
+        let modifiedDateTime            = $(this).data('modifiedDateTime');
+        let ModifiedBy               = $(this).data('ModifiedBy');
+   
+        let actorAddressID                  = $(this).data('actorAddressID');
+        let addressTypeID                   = $(this).data('addressTypeID');
+        let actorAddressStreet           = $(this).data('actorAddressStreet');
+        let actorAddressStreetNumber            = $(this).data('actorAddressStreetNumber');
+        let actorAddressPostalCode               = $(this).data('actorAddressPostalCode');
+    
+        let actorAddressCity                  = $(this).data('actorAddressCity');
+        let addressTypeID                   = $(this).data('addressTypeID');
+        let actorAddressStreet           = $(this).data('actorAddressStreet');
+        let actorAddressStreetNumber            = $(this).data('actorAddressStreetNumber');
+        let actorAddressPostalCode               = $(this).data('actorAddressPostalCode');
+ 
+       //{"actorID":1,"actorName":"Actor One","actorCreationDateTime":"2022-12-30 10:40:44","actorDateTimeLastUpdated":"2022-12-30 10:40:44","actorCompanyRegistrationNumber":"885522","actorVATRegistrationNumber":"969696","actorTypeID":1,"actorStatusID":1,"OrganisationID":1,"actorTypeDescription":"actor type 1","actorStatusDescription":"in process",
+        
+        //"actorContactID":1,"contactTypeID":1,"actorContactFirstName":"demo first name","actorContactLastName":"demo last name","actorContactEmail":"demo@gmail.com","actorContactPhone":"9874563210","actorContactMobile":"9639639630","actorContactURL":"demo url","modifiedDateTime":"2022-12-30 10:43:23","ModifiedBy":"1","actorAddressID":1,"addressTypeID":1,"actorAddressStreet":"street-1","actorAddressStreetNumber":"12","actorAddressPostalCode":"302017","actorAddressCity":"london","countryID":1,"userAddressAdditionalAddressLines":"addr-2","ModifiedDateTime":"2022-12-30 10:42:10"}
 
         e.preventDefault();
         btn = this;
 
-        //alert("userFirstName="+userFirstName);
-        $('#userID_to_view').val(userID);
-
-        $('#view_userFirstName').html(userFirstName);
-        $('#view_userLastName').html(userLastName);
-        //$('#view_roleID').val(roleID).change();
-        $('#view_email').html(email);
-        $('#view_phoneNumber').html(phoneNumber);
-        $('#view_mobileNumber').html(mobileNumber);
-        //$('#view_OrganisationID').val(OrganisationID);
-        //$('#view_modifiedBy').val(modifiedBy);
+        $('#actorID_to_view').val(actorID);
+        $('#view_actorName').html(actorName);
+        $('#view_actorCreationDateTime').html(actorCreationDateTime);
+        $('#view_actorDateTimeLastUpdated').html(actorDateTimeLastUpdated);
+        $('#view_actorCompanyRegistrationNumber').html(actorCompanyRegistrationNumber);
+        $('#view_actorVATRegistrationNumber').html(actorVATRegistrationNumber);
+        $('#view_actorTypeDescription').html(actorTypeDescription);
+        $('#view_actorStatusDescription').html(actorStatusDescription);
 
     });
 

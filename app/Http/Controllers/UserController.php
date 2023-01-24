@@ -32,14 +32,16 @@ class UserController extends Controller
         $roles 	= DB::table('role')->select('role.roleID', 'role.roleDescription')->get();
 
         $data 	= DB::table('actor')
-                ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription')
+                ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','actorcontact.*','actoraddress.*')
                 //->where('userDeletedFlag', '=', 0)
                 ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
                 ->join('actorstatus','actorstatus.actorStatusID','=','actor.actorStatusID')
+                ->join('actorcontact','actorcontact.actorID','=','actor.actorID')
+                ->join('actoraddress','actoraddress.actorID','=','actor.actorID')
                 ->orderBy('actorName', 'asc')
                 ->get();
         //dd($data);
-        return view('customers', [ 'customers' => $data, 'roles' => $roles ]);
+        return view('customers', [ 'clients' => $data, 'roles' => $roles ]);
     }//end of function
 
      
