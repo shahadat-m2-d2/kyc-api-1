@@ -530,6 +530,7 @@ class kycAPIController extends Controller
     function actor($id=null){
         if($id == null){
             $data = DB::table('actor')
+            ->where('actor.actorDeletedFlag', "0")
             ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','organisation.*')
             ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
             ->join('actorstatus','actorstatus.actorStatusID','=','actor.actorStatusID')
@@ -537,6 +538,7 @@ class kycAPIController extends Controller
             ->get();
         }else{
             $data = DB::table('actor') 
+            ->where('actor.actorDeletedFlag', "0")
             ->where('actor.actorID', $id)
            ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','organisation.*')
             ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
@@ -550,6 +552,7 @@ class kycAPIController extends Controller
     function actor_findByStatus($status=null){
         if($status == null){
             $data = DB::table('actor')
+            ->where('actor.actorDeletedFlag', "0")
             ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','organisation.*')
             ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
             ->join('actorstatus','actorstatus.actorStatusID','=','actor.actorStatusID')
@@ -557,8 +560,9 @@ class kycAPIController extends Controller
             ->get();
         }else{
             $data = DB::table('actor') 
+            ->where('actor.actorDeletedFlag', "0")
             ->where('actor.actorStatusID', $status)
-           ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','organisation.*')
+            ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','organisation.*')
             ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
             ->join('actorstatus','actorstatus.actorStatusID','=','actor.actorStatusID')
             ->join('organisation','organisation.OrganisationID','=','actor.OrganisationID')
@@ -641,14 +645,19 @@ class kycAPIController extends Controller
 
     function delete_actor(Request $req, $id=null){
         $data               = ["status"=>"0", "message"=>""];
-        $actorID     = $req->actorID;
+        $actorID            = $req->actorID;
+
+        $actorDateTimeLastUpdated   = date("Y-m-d H:i:s");
+
         $check_exist        = DB::table('actor') 
         ->where('actorID', $actorID)
         ->select('actor.*')
         ->get();
         $countOfRow                     = $check_exist->count();
         if( $countOfRow > 0 ){
-            $deleted_rows               = DB::table('actor')->where('actorID', $actorID)->delete();
+            //$deleted_rows             = DB::table('actor')->where('actorID', $actorID)->delete();
+            $updatedata                 = array('actorDeletedFlag'=>"1","actorDateTimeLastUpdated"=>$actorDateTimeLastUpdated);
+            $deleted_rows               = DB::table('actor')->where('actorID', $actorID)->update($updatedata);
             if($deleted_rows > 0){
                 $data["status"]         = 1;
                 $data["message"]        = "Data has been deleted!";

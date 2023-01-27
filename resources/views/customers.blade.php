@@ -4,8 +4,8 @@
 <div class="page-content">
     <div class="widget-row">
         <div class="page-intro">
-            <span class="page-title">Klanten</span>
-            <span class="page-desc">Hier zie je een overzicht van alle klanten @php echo json_encode($clients);@endphp</span>
+            <span class="page-title">{{$actorPageTitleMulti}}</span>
+            <span class="page-desc">Hier zie je een overzicht van alle {{$actorPageTitleMulti}} @php //echo json_encode($clients);@endphp</span>
         </div>
     </div>
 
@@ -13,16 +13,16 @@
         <div class="widget-area">
             <div class="table-actions">
                 <div class="table-title">
-                    Klanten overzicht
+                    {{$actorPageTitleMulti}} overzicht
                 </div>
 
-                <a class="table-add modal-button" href="#modalClientAdd">Nieuwe klant toevoegen</a>
+                <a class="table-add modal-button" href="#modalClientAdd">Nieuwe {{$actorPageTitleSingle}} toevoegen</a>
             </div>
 
             <table class="table table-default" id="datatable">
                 <thead>
                     <tr>
-                        <th class="th-sort">Klantnaam</th>
+                        <th class="th-sort">{{$actorPageTitleSingle}} naam</th>
                         <th class="th-sort">Registratiedatum</th>
                         <th class="th-sort">Laatste wijziging</th>
                         <th class="th-sort th-center">Bewerken</th>
@@ -30,17 +30,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach( $clients as $clients_key => $clients_value )
+                    @foreach( $clients as $clients_key => $clients_value )
                     <!--  Row with Working Links -->
                     <tr>
-                        <td href="#modalClientView" class="modal-button client-view-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}" data-actorcreationdatetime="{{ $clients_value->actorCreationDateTime }}" data-actordatetimelastupdated="{{ $clients_value->actorDateTimeLastUpdated }}" data-actorcompanyregistrationnumber="{{ $clients_value->actorCompanyRegistrationNumber }}" data-actorvatregistrationnumber="{{ $clients_value->actorVATRegistrationNumber }}" data-actortypeid="{{ $clients_value->actorTypeID }}" data-actorstatusid="{{ $clients_value->actorStatusID }}" data-organisationid="{{ $clients_value->OrganisationID }}" data-actoryypedescription="{{ $clients_value->actorTypeDescription }}" data-actorstatusdescription="{{ $clients_value->actorStatusDescription }}" >{{ $clients_value->actorName }}</td>
+                        <td href="#modalClientView" class="modal-button client-view-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}" data-actorcreationdatetime="{{ $clients_value->actorCreationDateTime }}" data-actordatetimelastupdated="{{ $clients_value->actorDateTimeLastUpdated }}" data-actorcompanyregistrationnumber="{{ $clients_value->actorCompanyRegistrationNumber }}" data-actorvatregistrationnumber="{{ $clients_value->actorVATRegistrationNumber }}" data-actortypeid="{{ $clients_value->actorTypeID }}" data-actorstatusid="{{ $clients_value->actorStatusID }}" data-organisationid="{{ $clients_value->OrganisationID }}" data-actoryypedescription="{{ $clients_value->actorTypeDescription }}" data-actorstatusdescription="{{ $clients_value->actorStatusDescription }}" data-actorcontactid="{{ $clients_value->actorContactID }}" data-contacttypeid="{{ $clients_value->contactTypeID }}" data-actorcontactfirstname="{{ $clients_value->actorContactFirstName }}" data-actorcontactlastname="{{ $clients_value->actorContactLastName }}" data-actorcontactemail="{{ $clients_value->actorContactEmail }}" data-actorcontactphone="{{ $clients_value->actorContactPhone }}" data-actorcontactmobile="{{ $clients_value->actorContactMobile }}" data-actorcontacturl="{{ $clients_value->actorContactURL }}" data-modifieddatetime="{{ $clients_value->modifiedDateTime }}" data-modifiedby="{{ $clients_value->ModifiedBy }}" data-actoraddressid="{{ $clients_value->actorAddressID }}" data-addresstypeid="{{ $clients_value->addressTypeID }}" data-actoraddressstreet="{{ $clients_value->actorAddressStreet }}" data-actoraddressstreetnumber="{{ $clients_value->actorAddressStreetNumber }}" data-actoraddresspostalcode="{{ $clients_value->actorAddressPostalCode }}" data-actoraddresscity="{{ $clients_value->actorAddressCity }}" data-countryid="{{ $clients_value->countryID }}" data-useraddressadditionaladdresslines="{{ $clients_value->userAddressAdditionalAddressLines }}">{{ $clients_value->actorName }}</td>
                         <td>{{ $clients_value->actorCreationDateTime }}</td>
                         <td>{{ $clients_value->actorDateTimeLastUpdated }}</td>
                         <td class="action">
-                            <a href="#modalClientEdit" class="modal-button client-edit-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}" data-actorcreationdatetime="{{ $clients_value->actorCreationDateTime }}" data-actordatetimelastupdated="{{ $clients_value->actorDateTimeLastUpdated }}" data-actorcompanyregistrationnumber="{{ $clients_value->actorCompanyRegistrationNumber }}" data-actorvatregistrationnumber="{{ $clients_value->actorVATRegistrationNumber }}" data-actortypeid="{{ $clients_value->actorTypeID }}" data-actorstatusid="{{ $clients_value->actorStatusID }}" data-organisationid="{{ $clients_value->OrganisationID }}" data-actoryypedescription="{{ $clients_value->actorTypeDescription }}" data-actorstatusdescription="{{ $clients_value->actorStatusDescription }}" >
+                            <a href="#modalClientEdit" class="modal-button client-edit-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}" data-actorcreationdatetime="{{ $clients_value->actorCreationDateTime }}" data-actordatetimelastupdated="{{ $clients_value->actorDateTimeLastUpdated }}" data-actorcompanyregistrationnumber="{{ $clients_value->actorCompanyRegistrationNumber }}" data-actorvatregistrationnumber="{{ $clients_value->actorVATRegistrationNumber }}" data-actortypeid="{{ $clients_value->actorTypeID }}" data-actorstatusid="{{ $clients_value->actorStatusID }}" data-organisationid="{{ $clients_value->OrganisationID }}" data-actoryypedescription="{{ $clients_value->actorTypeDescription }}" data-actorstatusdescription="{{ $clients_value->actorStatusDescription }}" data-actorcontactid="{{ $clients_value->actorContactID }}" data-contacttypeid="{{ $clients_value->contactTypeID }}" data-actorcontactfirstname="{{ $clients_value->actorContactFirstName }}" data-actorcontactlastname="{{ $clients_value->actorContactLastName }}" data-actorcontactemail="{{ $clients_value->actorContactEmail }}" data-actorcontactphone="{{ $clients_value->actorContactPhone }}" data-actorcontactmobile="{{ $clients_value->actorContactMobile }}" data-actorcontacturl="{{ $clients_value->actorContactURL }}" data-modifieddatetime="{{ $clients_value->modifiedDateTime }}" data-modifiedby="{{ $clients_value->ModifiedBy }}" data-actoraddressid="{{ $clients_value->actorAddressID }}" data-addresstypeid="{{ $clients_value->addressTypeID }}" data-actoraddressstreet="{{ $clients_value->actorAddressStreet }}" data-actoraddressstreetnumber="{{ $clients_value->actorAddressStreetNumber }}" data-actoraddresspostalcode="{{ $clients_value->actorAddressPostalCode }}" data-actoraddresscity="{{ $clients_value->actorAddressCity }}" data-countryid="{{ $clients_value->countryID }}" data-useraddressadditionaladdresslines="{{ $clients_value->userAddressAdditionalAddressLines }}">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a href="#modalUserDelete" class="modal-button client-delete-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}">
+                            <a href="#modalActorDelete" class="modal-button client-delete-button" data-actorid="{{ $clients_value->actorID }}" data-actorname="{{ $clients_value->actorName }}">
                                 <i class="fa fa-ban"></i>
                             </a>
                         </td>
@@ -49,9 +49,9 @@
                             <img title="Doorlopende Controle" src="icons/DC-icon--filled.svg" class="control control-success modal-button" href="#modalDCSuccess" width="30" height="30">
                         </td>
                     </tr>
-                    <!--  END Row with Working Links --> 
-                @endforeach
-                <!-- 
+                    <!--  END Row with Working Links -->
+                    @endforeach
+                    <!-- 
                     <tr>
                         <td class="modal-button" href="#modalClientView">Skipdemakelaar</td>
                         <td>21-05-2022</td>
@@ -115,251 +115,243 @@
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title">Nieuwe klant toevoegen</span>
+                <span class="modal-title">Nieuwe {{$actorPageTitleSingle}} toevoegen</span>
                 <span class="close"><i class="fa fa-close"></i></span>
             </div>
             <div class="modal-body">
-                <form>
-
-                    <span class="form-section--title">Bedrijfsgegevens</span>
-
-
-                    <div class="form-field">
-                        <label>Bedrijf</label>
-                        <input type="text" required />
-                    </div>
-                    <div class="form-field">
-                        <label>BTW nummer</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>KVK nummer</label>
-                        <input type="text" />
-                    </div>
-
-                    <span class="form-section--title">Adres</span>
+                <form method="POST" enctype="multipart/form-data"> 
+                    @csrf
+                    <input type="hidden" id="OrganisationID" name="OrganisationID" value="1">
+                    <input type="hidden" id="modifiedBy" name="modifiedBy" value="1">
+                    <input type="hidden" id="actorTypeID" name="actorTypeID" value="{{ $actorTypeID }}"><!-- Customers(1), Suppliers(2)-->
+                    <input type="hidden" id="actorStatusID" name="actorStatusID" value="1"><!-- in process(1), Available(2)-->
+                    
+                    <span class="form-section--title">Company details</span>
 
                     <div class="form-field">
-                        <label>Straat</label>
-                        <input type="text" required />
+                        <label>Company</label>
+                        <input type="text" id="actorName" name="actorName" required="" >
                     </div>
                     <div class="form-field">
-                        <label>Huisnummer</label>
-                        <input type="number" required />
+                        <label>VAT number</label>
+                        <input type="text" id="actorVATRegistrationNumber" name="actorVATRegistrationNumber" required="" >
                     </div>
                     <div class="form-field">
-                        <label>Toevoeging</label>
-                        <input type="text" />
+                        <label>Chamber of Commerce number</label>
+                        <input type="text" id="actorCompanyRegistrationNumber" name="actorCompanyRegistrationNumber" required="" >
+                    </div>
+                    
+                    <span class="form-section--title">Address</span>
+
+                    <div class="form-field">
+                        <label>Address Type</label>
+                        <select required id="addressTypeID" name="addressTypeID">
+                            @foreach( $addresstypes as $addresstype_key => $addresstype_value )
+                                <option value="{{ $addresstype_value->addressTypeID }}">{{ $addresstype_value->addressTypeDescription }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Street</label>
+                        <input type="text" id="actorAddressStreet" name="actorAddressStreet" required="" >
+                    </div>
+                    <div class="form-field">
+                        <label>House number</label>
+                        <input type="number" id="actorAddressStreetNumber" name="actorAddressStreetNumber" required="" >
+                    </div>
+                    <div class="form-field">
+                        <label>Add on</label>
+                        <input type="text" id="userAddressAdditionalAddressLines" name="userAddressAdditionalAddressLines">
                     </div>
                     <div class="form-field">
                         <label>Postcode</label>
-                        <input type="text" required />
+                        <input type="text" id="actorAddressPostalCode" name="actorAddressPostalCode" required="" >
                     </div>
                     <div class="form-field">
-                        <label>Plaats</label>
-                        <input type="text" required />
-                    </div>
-                    <div class="form-field">
-                        <label>Land</label>
-                        <input type="text" required />
-                    </div>
-
-                    <span class="form-section--title">Adres 2</span>
-
-                    <div class="form-field">
-                        <label>Straat</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>Huisnummer</label>
-                        <input type="number" />
-                    </div>
-                    <div class="form-field">
-                        <label>Toevoeging</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>Postcode</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>Plaats</label>
-                        <input type="text" />
+                        <label>Place</label>
+                        <input type="text" id="actorAddressCity" name="actorAddressCity" required="" >
                     </div>
                     <div class="form-field">
                         <label>Land</label>
-                        <input type="text" />
+                        <select id="countryID" name="countryID" required>
+                            @foreach( $countries as $country_key => $country_value )
+                                <option value="{{ $country_value->countryID }}">{{ $country_value->countryName }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-                    <span class="form-section--title">Contactgegevens</span>
+                    
+                    <span class="form-section--title">Contact details</span>
                     <div class="form-field">
-                        <label>Voornaam</label>
-                        <input type="text" required />
+                        <label>Contact Type</label>
+                        <select required id="contactTypeID" name="contactTypeID">
+                            @foreach( $contacttypes as $contacttype_key => $contacttype_value )
+                                <option value="{{ $contacttype_value->contactTypeID }}">{{ $contacttype_value->contactTypeDescription }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-field">
-                        <label>Achternaam</label>
-                        <input type="text" required />
+                        <label>First Name</label>
+                        <input type="text" id="actorContactFirstName" name="actorContactFirstName" required="" >
+                    </div>
+                    <div class="form-field">
+                        <label>Last name</label>
+                        <input type="text" id="actorContactLastName" name="actorContactLastName" required="">
                     </div>
                     <div class="form-field">
                         <label>Email</label>
-                        <input type="email" required />
+                        <input type="email" id="actorContactEmail" name="actorContactEmail" required="">
                     </div>
                     <div class="form-field">
-                        <label>Telefoonnummer</label>
-                        <input type="tel" />
+                        <label>phone number</label>
+                        <input type="tel" id="actorContactPhone" name="actorContactPhone">
                     </div>
                     <div class="form-field">
-                        <label>Mobielnummer</label>
-                        <input type="tel" />
+                        <label>Mobile number</label>
+                        <input type="tel" id="actorContactMobile" name="actorContactMobile">
                     </div>
 
                     <span class="form-section--title">Extra</span>
 
                     <div class="form-field">
-                        <label>Notitie</label>
-                        <textarea></textarea>
+                        <label>Note</label>
+                        <textarea id="actorContactURL" name="actorContactURL"></textarea>
                     </div>
                 </form>
+
+
             </div>
             <div class="modal-footer">
                 <a class="btn btn-outline btn-close">Annuleren</a>
-                <a class="btn btn-primary">Opslaan</a>
+                <a class="btn btn-primary" href="javascript:void();" onclick="add_actor();">Opslaan</a>
             </div>
         </div>
     </div>
+
+
 
     <div id="modalClientEdit" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title">Klant bewerken</span>
+                <span class="modal-title">{{$actorPageTitleSingle}} bewerken</span>
                 <span class="close"><i class="fa fa-close"></i></span>
             </div>
             <div class="modal-body">
-                <form>
+            <form method="POST" enctype="multipart/form-data"> 
+                    @csrf
+                    <input type="hidden" id="actorID_to_edit" name="actorID_to_edit" value="0">
+                    <input type="hidden" id="edit_OrganisationID" name="OrganisationID" value="1">
+                    <input type="hidden" id="edit_modifiedBy" name="modifiedBy" value="1">
+                    <input type="hidden" id="edit_actorTypeID" name="actorTypeID" value="{{ $actorTypeID }}"><!-- Customers(1), Suppliers(2)-->
+                    <input type="hidden" id="edit_actorStatusID" name="actorStatusID" value="1"><!-- in process(1), Available(2)-->
+                    <input type="hidden" id="edit_actorContactID" name="edit_actorContactID" value="0">
+                    <input type="hidden" id="edit_actorAddressID" name="edit_actorAddressID" value="0">
 
-                    <span class="form-section--title">Bedrijfsgegevens</span>
-
-                    <div class="form-field">
-                        <label>Bedrijf</label>
-                        <input type="text" placeholder="Skipdemakelaar" />
-                    </div>
-                    <div class="form-field">
-                        <label>BTW nummer</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>KVK nummer</label>
-                        <input type="text" />
-                    </div>
-
-                    <span class="form-section--title">Adres</span>
+                    <span class="form-section--title">Company details</span>
 
                     <div class="form-field">
-                        <label>Straat</label>
-                        <input type="text" placeholder="Escudostraat" />
+                        <label>Company</label>
+                        <input type="text" id="edit_actorName" name="edit_actorName" required="" >
                     </div>
                     <div class="form-field">
-                        <label>Huisnummer</label>
-                        <input type="number" placeholder="2" />
+                        <label>VAT number</label>
+                        <input type="text" id="edit_actorVATRegistrationNumber" name="edit_actorVATRegistrationNumber" required="" >
                     </div>
                     <div class="form-field">
-                        <label>Toevoeging</label>
-                        <input type="text" />
+                        <label>Chamber of Commerce number</label>
+                        <input type="text" id="edit_actorCompanyRegistrationNumber" name="edit_actorCompanyRegistrationNumber" required="" >
+                    </div>
+                    
+                    <span class="form-section--title">Address</span>
+
+                    <div class="form-field">
+                        <label>Address Type</label>
+                        <select required id="edit_addressTypeID" name="edit_addressTypeID">
+                            @foreach( $addresstypes as $addresstype_key => $addresstype_value )
+                                <option value="{{ $addresstype_value->addressTypeID }}">{{ $addresstype_value->addressTypeDescription }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Street</label>
+                        <input type="text" id="edit_actorAddressStreet" name="edit_actorAddressStreet" required="" >
+                    </div>
+                    <div class="form-field">
+                        <label>House number</label>
+                        <input type="number" id="edit_actorAddressStreetNumber" name="edit_actorAddressStreetNumber" required="" >
+                    </div>
+                    <div class="form-field">
+                        <label>Add on</label>
+                        <input type="text" id="edit_userAddressAdditionalAddressLines" name="edit_userAddressAdditionalAddressLines">
                     </div>
                     <div class="form-field">
                         <label>Postcode</label>
-                        <input type="text" placeholder="2991XV" />
+                        <input type="text" id="edit_actorAddressPostalCode" name="edit_actorAddressPostalCode" required="" >
                     </div>
                     <div class="form-field">
-                        <label>Plaats</label>
-                        <input type="text" placeholder="Barendrecht" />
-                    </div>
-                    <div class="form-field">
-                        <label>Land</label>
-                        <input type="text" placeholder="Nederland" />
-                    </div>
-
-                    <span class="form-section--title">Adres 2</span>
-
-                    <div class="form-field">
-                        <label>Straat</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>Huisnummer</label>
-                        <input type="number" />
-                    </div>
-                    <div class="form-field">
-                        <label>Toevoeging</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>Postcode</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-field">
-                        <label>Plaats</label>
-                        <input type="text" />
+                        <label>Place</label>
+                        <input type="text" id="edit_actorAddressCity" name="edit_actorAddressCity" required="" >
                     </div>
                     <div class="form-field">
                         <label>Land</label>
-                        <input type="text" />
+                        <select id="edit_countryID" name="edit_countryID" required>
+                            @foreach( $countries as $country_key => $country_value )
+                                <option value="{{ $country_value->countryID }}">{{ $country_value->countryName }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-                    <span class="form-section--title">Contactgegevens</span>
+                    
+                    <span class="form-section--title">Contact details</span>
                     <div class="form-field">
-                        <label>Voornaam</label>
-                        <input type="text" placeholder="Stanley" />
+                        <label>Contact Type</label>
+                        <select required id="edit_contactTypeID" name="edit_contactTypeID">
+                            @foreach( $contacttypes as $contacttype_key => $contacttype_value )
+                                <option value="{{ $contacttype_value->contactTypeID }}">{{ $contacttype_value->contactTypeDescription }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-field">
-                        <label>Achternaam</label>
-                        <input type="text" placeholder="Messi" />
+                        <label>First Name</label>
+                        <input type="text" id="edit_actorContactFirstName" name="edit_actorContactFirstName" required="" >
+                    </div>
+                    <div class="form-field">
+                        <label>Last name</label>
+                        <input type="text" id="edit_actorContactLastName" name="edit_actorContactLastName" required="">
                     </div>
                     <div class="form-field">
                         <label>Email</label>
-                        <input type="email" placeholder="stanley.messi@skip.com" />
+                        <input type="email" id="edit_actorContactEmail" name="edit_actorContactEmail" required="">
                     </div>
                     <div class="form-field">
-                        <label>Telefoonnummer</label>
-                        <input type="tel" placeholder="0101234567" />
+                        <label>phone number</label>
+                        <input type="tel" id="edit_actorContactPhone" name="edit_actorContactPhone">
                     </div>
                     <div class="form-field">
-                        <label>Mobielnummer</label>
-                        <input type="tel" placeholder="0612345678" />
+                        <label>Mobile number</label>
+                        <input type="tel" id="edit_actorContactMobile" name="edit_actorContactMobile">
                     </div>
 
                     <span class="form-section--title">Extra</span>
 
                     <div class="form-field">
-                        <label>Notitie</label>
-                        <textarea></textarea>
+                        <label>Note</label>
+                        <textarea id="edit_actorContactURL" name="edit_actorContactURL"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <a class="btn btn-outline btn-close">Annuleren</a>
-                <a class="btn btn-primary">Opslaan</a>
+                <a class="btn btn-primary" onclick="update_actor();">Opslaan</a>
             </div>
         </div>
     </div>
 
 
     <div id="modalClientView" class="modal">
-        $('#actorID_to_view').val(actorID);
-        $('#view_actorName').html(actorName);
-        $('#view_actorCreationDateTime').html(actorCreationDateTime);
-        $('#view_actorDateTimeLastUpdated').html(actorDateTimeLastUpdated);
-        $('#view_actorCompanyRegistrationNumber').html(actorCompanyRegistrationNumber);
-        $('#view_actorVATRegistrationNumber').html(actorVATRegistrationNumber);
-        $('#view_actorTypeDescription').html(actorTypeDescription);
-        $('#view_actorStatusDescription').html(actorStatusDescription); 
-
-
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title">Klant
+                <span class="modal-title">{{$actorPageTitleSingle}}
                     <img src="icons/IC-icon--filled.svg" class="control control-success modal-button" href="#modalIC" width="40" height="40">
                     <img src="icons/addC-icon--filled.svg" class="control control-add modal-button" href="#modalDCNew" width="40" height="40">
                 </span>
@@ -372,7 +364,7 @@
 
                     <div class="form-field">
                         <label>Company</label>
-                        <span id="view_actorStatusDescription">Shipbroker</span>
+                        <span id="view_actorName">---</span>
                     </div>
                     <div class="form-field">
                         <label>VAT number</label>
@@ -380,26 +372,26 @@
                     </div>
                     <div class="form-field">
                         <label>Chamber of Commerce number</label>
-                        <span>1234567890B01</span>
+                        <span id="view_actorCompanyRegistrationNumber">---</span>
                     </div>
 
                     <span class="form-section--title">Address</span>
 
                     <div class="form-field">
                         <label>Street</label>
-                        <span>Escudostraat</span>
+                        <span id="view_actorAddressStreet">---</span>
                     </div>
                     <div class="form-field">
                         <label>House number</label>
-                        <span>2</span>
+                        <span id="view_actorAddressStreetNumber">---</span>
                     </div>
                     <div class="form-field">
                         <label>Postcode</label>
-                        <span>2991XV</span>
+                        <span id="view_actorAddressPostalCode">---</span>
                     </div>
                     <div class="form-field">
                         <label>Place</label>
-                        <span>Barendrecht</span>
+                        <span id="view_actorAddressCity">---</span>
                     </div>
                     <div class="form-field">
                         <label>Land</label>
@@ -410,32 +402,31 @@
 
                     <div class="form-field">
                         <label>First Name</label>
-                        <span>Stanley</span>
+                        <span id="view_actorContactFirstName">---</span>
                     </div>
                     <div class="form-field">
                         <label>Last name</label>
-                        <span>Messi</span>
+                        <span id="view_actorContactLastName">---</span>
                     </div>
 
                     <div class="form-field">
                         <label>Email</label>
-                        <span>stanley.messi@skip.com</span>
+                        <span id="view_actorContactEmail">---</span>
                     </div>
                     <div class="form-field">
                         <label>phone number</label>
-                        <span>0101234567</span>
+                        <span id="view_actorContactPhone">---</span>
                     </div>
                     <div class="form-field">
                         <label>Mobile number</label>
-                        <span>0612345678</span>
+                        <span id="view_actorContactMobile">---</span>
                     </div>
                 </form>
-
-
-
             </div>
         </div>
     </div>
+
+
 
     <div id="modalICNew" class="modal modal-steps">
         <!-- Modal content -->
@@ -785,7 +776,7 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Aan welke partij(en) gaat de klant de producten leveren?</label>
+                            <label>Aan welke partij(en) gaat de {{$actorPageTitleSingle}} de producten leveren?</label>
                             <input type="text" class="multi-input" required /><i class="fa fa-plus multi-input--icon"></i>
 
 
@@ -794,11 +785,11 @@
 
                         </div>
                         <div class="form-field">
-                            <label>Hoe ziet het KYC proces van de klant eruit?</label>
+                            <label>Hoe ziet het KYC proces van de {{$actorPageTitleSingle}} eruit?</label>
                             <textarea required></textarea>
                         </div>
                         <div class="form-field">
-                            <label>Word de klant als betrouwbaar gezien na de controle?</label>
+                            <label>Word de {{$actorPageTitleSingle}} als betrouwbaar gezien na de controle?</label>
                             <select required>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -818,7 +809,7 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Is de door de klant gevraagde afname van producten reëel op basis van de marktpositie</label>
+                            <label>Is de door de {{$actorPageTitleSingle}} gevraagde afname van producten reëel op basis van de marktpositie</label>
                             <select required>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -838,7 +829,7 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Is het BTW nummer van de klant correct?</label>
+                            <label>Is het BTW nummer van de {{$actorPageTitleSingle}} correct?</label>
                             <select required>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -846,7 +837,7 @@
                         </div>
 
                         <div class="form-field">
-                            <label>Door klant opgegeven BTW nummer</label>
+                            <label>Door {{$actorPageTitleSingle}} opgegeven BTW nummer</label>
                             <span>123456789</span>
                         </div>
 
@@ -917,17 +908,17 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Aan welke partij(en) gaat de klant de producten leveren?</label>
+                            <label>Aan welke partij(en) gaat de {{$actorPageTitleSingle}} de producten leveren?</label>
                             <span>Partij A</span>
                             <span>Partij B</span>
                             <span>Partij C</span>
                         </div>
                         <div class="form-field">
-                            <label>Hoe ziet het KYC proces van de klant eruit?</label>
-                            <span>Hier kan een kleine uitleg komen over hoe het proces eruit ziet van de klant</span>
+                            <label>Hoe ziet het KYC proces van de {{$actorPageTitleSingle}} eruit?</label>
+                            <span>Hier kan een kleine uitleg komen over hoe het proces eruit ziet van de {{$actorPageTitleSingle}}</span>
                         </div>
                         <div class="form-field">
-                            <label>Word de klant als betrouwbaar gezien na de controle?</label>
+                            <label>Word de {{$actorPageTitleSingle}} als betrouwbaar gezien na de controle?</label>
                             <span>Ja</span>
                         </div>
                     </form>
@@ -937,7 +928,7 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Is de door de klant gevraagde afname van producten reëel op basis van de marktpositie</label>
+                            <label>Is de door de {{$actorPageTitleSingle}} gevraagde afname van producten reëel op basis van de marktpositie</label>
                             <span>ja</span>
                         </div>
                     </form>
@@ -947,12 +938,12 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Is het BTW nummer van de klant correct?</label>
+                            <label>Is het BTW nummer van de {{$actorPageTitleSingle}} correct?</label>
                             <span>Ja</span>
                         </div>
 
                         <div class="form-field">
-                            <label>Door klant opgegeven BTW nummer</label>
+                            <label>Door {{$actorPageTitleSingle}} opgegeven BTW nummer</label>
                             <span>123456789</span>
                         </div>
                     </form>
@@ -992,15 +983,15 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Aan welke partij(en) gaat de klant de producten leveren?</label>
+                            <label>Aan welke partij(en) gaat de {{$actorPageTitleSingle}} de producten leveren?</label>
                             <input type="text" placeholder="Partij A" />
                         </div>
                         <div class="form-field">
-                            <label>Hoe ziet het KYC proces van de klant eruit?</label>
-                            <textarea placeholder="Hier kan een kleine uitleg komen over hoe het proces eruit ziet van de klant"></textarea>
+                            <label>Hoe ziet het KYC proces van de {{$actorPageTitleSingle}} eruit?</label>
+                            <textarea placeholder="Hier kan een kleine uitleg komen over hoe het proces eruit ziet van de {{$actorPageTitleSingle}}"></textarea>
                         </div>
                         <div class="form-field">
-                            <label>Word de klant als betrouwbaar gezien na de controle?</label>
+                            <label>Word de {{$actorPageTitleSingle}} als betrouwbaar gezien na de controle?</label>
                             <select>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -1019,7 +1010,7 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Is de door de klant gevraagde afname van producten reëel op basis van de marktpositie</label>
+                            <label>Is de door de {{$actorPageTitleSingle}} gevraagde afname van producten reëel op basis van de marktpositie</label>
                             <select>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -1038,12 +1029,12 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Door klant opgegeven BTW nummer</label>
+                            <label>Door {{$actorPageTitleSingle}} opgegeven BTW nummer</label>
                             <span>123456789</span>
                         </div>
 
                         <div class="form-field">
-                            <label>Is het BTW nummer van de klant correct?</label>
+                            <label>Is het BTW nummer van de {{$actorPageTitleSingle}} correct?</label>
                             <select required>
                                 <option>Nee</option>
                                 <option>Ja</option>
@@ -1116,15 +1107,15 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Aan welke partij(en) gaat de klant de producten leveren?</label>
+                            <label>Aan welke partij(en) gaat de {{$actorPageTitleSingle}} de producten leveren?</label>
                             <input type="text" placeholder="Partij A" />
                         </div>
                         <div class="form-field">
-                            <label>Hoe ziet het KYC proces van de klant eruit?</label>
-                            <textarea placeholder="Hier kan een kleine uitleg komen over hoe het proces eruit ziet van de klant"></textarea>
+                            <label>Hoe ziet het KYC proces van de {{$actorPageTitleSingle}} eruit?</label>
+                            <textarea placeholder="Hier kan een kleine uitleg komen over hoe het proces eruit ziet van de {{$actorPageTitleSingle}}"></textarea>
                         </div>
                         <div class="form-field">
-                            <label>Word de klant als betrouwbaar gezien na de controle?</label>
+                            <label>Word de {{$actorPageTitleSingle}} als betrouwbaar gezien na de controle?</label>
                             <select>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -1143,7 +1134,7 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Is de door de klant gevraagde afname van producten reëel op basis van de marktpositie</label>
+                            <label>Is de door de {{$actorPageTitleSingle}} gevraagde afname van producten reëel op basis van de marktpositie</label>
                             <select>
                                 <option>Ja</option>
                                 <option>Nee</option>
@@ -1162,12 +1153,12 @@
                 <div class="form-tab">
                     <form>
                         <div class="form-field">
-                            <label>Door klant opgegeven BTW nummer</label>
+                            <label>Door {{$actorPageTitleSingle}} opgegeven BTW nummer</label>
                             <span>123456789</span>
                         </div>
 
                         <div class="form-field">
-                            <label>Is het BTW nummer van de klant correct?</label>
+                            <label>Is het BTW nummer van de {{$actorPageTitleSingle}} correct?</label>
                             <select required>
                                 <option>Nee</option>
                                 <option>Ja</option>
@@ -1320,6 +1311,26 @@
             </div>
         </div>
     </div>
+
+    <div id="modalActorDelete" class="modal">
+        <input type="hidden" id="actorID_to_delete" value="0">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">{{$actorPageTitleSingle}} verwijderen</span>
+                <span class="close"><i class="fa fa-close"></i></span>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u Ad Mini wilt verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-outline btn-close">Nee</a>
+                <a class="btn btn-primary" onclick="delete_actor();">Ja</a>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <!-- page-content end -->
 
@@ -1347,205 +1358,411 @@
 <script type="text/javascript">
     $(document).on('click', '.client-view-button', function(e) {
 
-        let actorID                         = $(this).data('actorid');
-        let actorName                       = $(this).data('actorname');
-        let actorCreationDateTime           = $(this).data('actorcreationdatetime');
-        let actorDateTimeLastUpdated        = $(this).data('actordatetimelastupdated');
-        let actorCompanyRegistrationNumber  = $(this).data('actorcompanyregistrationnumber');
-        let actorVATRegistrationNumber      = $(this).data('actorvatregistrationnumber');
+        let actorID                             = $(this).data('actorid');
+        let actorName                           = $(this).data('actorname');
+        let actorCreationDateTime               = $(this).data('actorcreationdatetime');
+        let actorDateTimeLastUpdated            = $(this).data('actordatetimelastupdated');
+        let actorCompanyRegistrationNumber      = $(this).data('actorcompanyregistrationnumber');
+        let actorVATRegistrationNumber          = $(this).data('actorvatregistrationnumber');
 
-        let actorTypeID                     = $(this).data('actortypeid');
-        let actorStatusID                   = $(this).data('actorstatusid');
-        let OrganisationID                  = $(this).data('organisationid');
-        let actorTypeDescription            = $(this).data('actortypedescription');
-        let actorStatusDescription          = $(this).data('actorstatusdescription');
- 
-        let actorContactID                  = $(this).data('actorContactID');
-        let contactTypeID                   = $(this).data('contactTypeID');
-        let actorContactFirstName           = $(this).data('actorContactFirstName');
-        let actorContactLastName            = $(this).data('actorContactLastName');
-        let actorContactEmail               = $(this).data('actorContactEmail');
-  
-        let actorContactPhone                  = $(this).data('actorContactPhone');
-        let actorContactMobile                   = $(this).data('actorContactMobile');
-        let actorContactURL           = $(this).data('actorContactURL');
-        let modifiedDateTime            = $(this).data('modifiedDateTime');
-        let ModifiedBy               = $(this).data('ModifiedBy');
-   
-        let actorAddressID                  = $(this).data('actorAddressID');
-        let addressTypeID                   = $(this).data('addressTypeID');
-        let actorAddressStreet           = $(this).data('actorAddressStreet');
-        let actorAddressStreetNumber            = $(this).data('actorAddressStreetNumber');
-        let actorAddressPostalCode               = $(this).data('actorAddressPostalCode');
-    
-        let actorAddressCity                  = $(this).data('actorAddressCity');
-        let addressTypeID                   = $(this).data('addressTypeID');
-        let actorAddressStreet           = $(this).data('actorAddressStreet');
-        let actorAddressStreetNumber            = $(this).data('actorAddressStreetNumber');
-        let actorAddressPostalCode               = $(this).data('actorAddressPostalCode');
- 
-       //{"actorID":1,"actorName":"Actor One","actorCreationDateTime":"2022-12-30 10:40:44","actorDateTimeLastUpdated":"2022-12-30 10:40:44","actorCompanyRegistrationNumber":"885522","actorVATRegistrationNumber":"969696","actorTypeID":1,"actorStatusID":1,"OrganisationID":1,"actorTypeDescription":"actor type 1","actorStatusDescription":"in process",
-        
-        //"actorContactID":1,"contactTypeID":1,"actorContactFirstName":"demo first name","actorContactLastName":"demo last name","actorContactEmail":"demo@gmail.com","actorContactPhone":"9874563210","actorContactMobile":"9639639630","actorContactURL":"demo url","modifiedDateTime":"2022-12-30 10:43:23","ModifiedBy":"1","actorAddressID":1,"addressTypeID":1,"actorAddressStreet":"street-1","actorAddressStreetNumber":"12","actorAddressPostalCode":"302017","actorAddressCity":"london","countryID":1,"userAddressAdditionalAddressLines":"addr-2","ModifiedDateTime":"2022-12-30 10:42:10"}
+        let actorTypeID                         = $(this).data('actortypeid');
+        let actorStatusID                       = $(this).data('actorstatusid');
+        let OrganisationID                      = $(this).data('organisationid');
+        let actorTypeDescription                = $(this).data('actortypedescription');
+        let actorStatusDescription              = $(this).data('actorstatusdescription');
+        let actorContactID                      = $(this).data('actorcontactid');
+        let contactTypeID                       = $(this).data('contacttypeid');
+
+        let actorContactFirstName               = $(this).data('actorcontactfirstname');
+        let actorContactLastName                = $(this).data('actorcontactlastname');
+        let actorContactEmail                   = $(this).data('actorcontactemail');
+        let actorContactPhone                   = $(this).data('actorcontactphone');
+        let actorContactMobile                  = $(this).data('actorcontactmobile');
+        let actorContactURL                     = $(this).data('actorcontacturl');
+        let modifiedDateTime                    = $(this).data('modifieddatetime');
+        let ModifiedBy                          = $(this).data('modifiedby');
+
+        let actorAddressID                      = $(this).data('actoraddressid');
+        let addressTypeID                       = $(this).data('addresstypeid');
+        let actorAddressStreet                  = $(this).data('actoraddressstreet');
+        let actorAddressStreetNumber            = $(this).data('actoraddressstreetnumber');
+        let actorAddressPostalCode              = $(this).data('actoraddresspostalcode');
+
+        let actorAddressCity                    = $(this).data('actoraddresscity');
+        let countryID                           = $(this).data('countryid');
+        let userAddressAdditionalAddressLines   = $(this).data('useraddressadditionaladdresslines');
 
         e.preventDefault();
         btn = this;
 
         $('#actorID_to_view').val(actorID);
         $('#view_actorName').html(actorName);
-        $('#view_actorCreationDateTime').html(actorCreationDateTime);
-        $('#view_actorDateTimeLastUpdated').html(actorDateTimeLastUpdated);
         $('#view_actorCompanyRegistrationNumber').html(actorCompanyRegistrationNumber);
         $('#view_actorVATRegistrationNumber').html(actorVATRegistrationNumber);
-        $('#view_actorTypeDescription').html(actorTypeDescription);
-        $('#view_actorStatusDescription').html(actorStatusDescription);
+        $('#view_actorContactFirstName').html(actorContactFirstName);
+        $('#view_actorContactLastName').html(actorContactLastName);
+        $('#view_actorContactEmail').html(actorContactEmail);
+        $('#view_actorContactPhone').html(actorContactPhone);
+        $('#view_actorContactMobile').html(actorContactMobile);
+        $('#view_actorAddressStreet').html(actorAddressStreet);
+        $('#view_actorAddressStreetNumber').html(actorAddressStreetNumber);
+        $('#view_actorAddressPostalCode').html(actorAddressPostalCode);
+        $('#view_actorAddressCity').html(actorAddressCity);
+
+        //$('#view_actorCreationDateTime').html(actorCreationDateTime);
+        //$('#view_actorDateTimeLastUpdated').html(actorDateTimeLastUpdated);
+        //$('#view_actorTypeDescription').html(actorTypeDescription);
+        //$('#view_actorStatusDescription').html(actorStatusDescription);
+        //$('#view_actorContactURL').html(actorContactURL);
+        //$('#view_userAddressAdditionalAddressLines').html(userAddressAdditionalAddressLines);    
 
     });
 
-    $(document).on('click', '.user-edit-button', function(e) {
-
-        let userID = $(this).data('userid');
-        let userFirstName = $(this).data('userfirstname');
-        let userLastName = $(this).data('userlastname');
-        let roleID = $(this).data('roleid');
-        let email = $(this).data('email');
-        let phoneNumber = $(this).data('phonenumber');
-        let mobileNumber = $(this).data('mobilenumber');
-        let OrganisationID = $(this).data('organisationid');
-        let modifiedBy = $(this).data('modifiedby');
-
-        e.preventDefault();
-        btn = this;
-
-        //alert("userFirstName="+userFirstName);
-        $('#userID_to_edit').val(userID);
-
-        $('#edit_userFirstName').val(userFirstName);
-        $('#edit_userLastName').val(userLastName);
-        $('#edit_roleID').val(roleID).change();
-        $('#edit_email').val(email);
-        $('#edit_phoneNumber').val(phoneNumber);
-        $('#edit_mobileNumber').val(mobileNumber);
-        $('#edit_OrganisationID').val(OrganisationID);
-        $('#edit_modifiedBy').val(modifiedBy);
-
-    });
-
-    function update_user() { //function start
+    function add_actor() { //function start
 
         //return false;
-        var _token = document.getElementsByName('_token')[0].value; //for laravel authentication 
-        var userID = $("#userID_to_edit").val();
-        var userFirstName = $("#edit_userFirstName").val();
-        var userLastName = $("#edit_userLastName").val();
-        var roleID = $("#edit_roleID").val();
-        var email = $("#edit_email").val();
-        var phoneNumber = $("#edit_phoneNumber").val();
-        var mobileNumber = $("#edit_mobileNumber").val();
-        var OrganisationID = $("#edit_OrganisationID").val();
-        var modifiedBy = $("#edit_modifiedBy").val();
+        var _token                                  = document.getElementsByName('_token')[0].value; //for laravel authentication 
+        var OrganisationID                          = $("#OrganisationID").val();
+        var actorTypeID                             = $("#actorTypeID").val();
+        var actorName                               = $("#actorName").val();
+        var actorVATRegistrationNumber              = $("#actorVATRegistrationNumber").val();
+        var actorCompanyRegistrationNumber          = $("#actorCompanyRegistrationNumber").val();
+        var addressTypeID                           = $("#addressTypeID").val();
+        var actorAddressStreet                      = $("#actorAddressStreet").val();
+        var actorAddressStreetNumber                = $("#actorAddressStreetNumber").val();
 
-        //console.log("_token=>"+_token+"&userFirstName=>"+userFirstName+"&userLastName=>"+userLastName+"&roleID=>"+roleID+"&email=>"+email+"&phoneNumber=>"+phoneNumber+"&mobileNumber=>"+mobileNumber+"&userName=>"+userName+"&userPassword=>"+userPassword+"&OrganisationID=>"+OrganisationID+"&modifiedBy=>"+modifiedBy);
+        var userAddressAdditionalAddressLines       = $("#userAddressAdditionalAddressLines").val();
+        var actorAddressPostalCode                  = $("#actorAddressPostalCode").val();
+        var actorAddressCity                        = $("#actorAddressCity").val();
+        var countryID                               = $("#countryID").val();
+        var contactTypeID                           = $("#contactTypeID").val();
+        var actorContactFirstName                   = $("#actorContactFirstName").val();
+        var actorContactLastName                    = $("#actorContactLastName").val();
+        var actorContactEmail                       = $("#actorContactEmail").val();
+
+        var actorContactPhone                       = $("#actorContactPhone").val();
+        var actorContactMobile                      = $("#actorContactMobile").val();
+        var actorContactURL                         = $("#actorContactURL").val();
+        var modifiedBy                              = $("#modifiedBy").val();
+        var actorStatusID                           = $("#actorStatusID").val();
+        var ModifiedBy                              = modifiedBy;
+        
         //Post to the server to handle the changes     
         //ajax code start
         $.ajax({
-            url: "/api/user",
-            type: "PUT",
-            data: {
-                _token: _token,
-                userID: userID,
-                userFirstName: userFirstName,
-                userLastName: userLastName,
-                roleID: roleID,
-                email: email,
-                phoneNumber: phoneNumber,
-                mobileNumber: mobileNumber,
-                OrganisationID: OrganisationID,
-                modifiedBy: modifiedBy
-            },
-            success: function(kyc_response) {
-                //console.log(kyc_response);
-                if (kyc_response.status == 1) {
-                    //alert(kyc_response.message);
-                    Swal.fire({
-                        position: 'center', //top-end
-                        icon: 'success',
-                        title: kyc_response.message,
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
-                    location.reload();
-                } else {
-                    //alert(kyc_response.message);
-                    Swal.fire({
-                        position: 'center', //top-end
-                        icon: 'error',
-                        title: kyc_response.message,
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
-                }
-            },
-            error: function(kyc_response) {
-                //$('#subscriberName-error').text(kyc_response.responseJSON.errors.subscriberName);  
-            }
-        });
-        //ajax code end
-    } //end of function 
-
-
-    $(document).on('click', '.user-delete-button', function(e) {
-
-        let userID = $(this).data('userid');
-        let userFirstName = $(this).data('userfirstname');
-        let userLastName = $(this).data('userlastname');
-        e.preventDefault();
-        btn = this;
-
-        //alert("userFirstName="+userFirstName);
-        $('#userID_to_delete').val(userID);
-        $('#modalUserDelete').find('.modal-body p').text('Weet u zeker dat u ' + userFirstName + ' ' + userLastName + ' wilt verwijderen?');
-
-    });
-
-    function add_user() { //function start
-
-        //return false;
-        var _token = document.getElementsByName('_token')[0].value; //for laravel authentication 
-        var userFirstName = $("#userFirstName").val();
-        var userLastName = $("#userLastName").val();
-        var roleID = $("#roleID").val();
-        var email = $("#email").val();
-        var phoneNumber = $("#phoneNumber").val();
-        var mobileNumber = $("#mobileNumber").val();
-        var userName = email; //$("#userName").val();
-        var userPassword = '1234'; //$("#userPassword").val();
-        var OrganisationID = 1; //$("#OrganisationID").val();
-        var modifiedBy = 1; //$("#modifiedBy").val();
-
-        //console.log("_token=>"+_token+"&userFirstName=>"+userFirstName+"&userLastName=>"+userLastName+"&roleID=>"+roleID+"&email=>"+email+"&phoneNumber=>"+phoneNumber+"&mobileNumber=>"+mobileNumber+"&userName=>"+userName+"&userPassword=>"+userPassword+"&OrganisationID=>"+OrganisationID+"&modifiedBy=>"+modifiedBy);
-        //Post to the server to handle the changes     
-        //ajax code start
-        $.ajax({
-            url: "/api/user",
+            url: "/api/actor",
             type: "POST",
             data: {
                 _token: _token,
-                userFirstName: userFirstName,
-                userLastName: userLastName,
-                roleID: roleID,
-                email: email,
-                phoneNumber: phoneNumber,
-                mobileNumber: mobileNumber,
-                userName: userName,
-                userPassword: userPassword,
-                OrganisationID: OrganisationID,
-                modifiedBy: modifiedBy
+                actorName: actorName,
+                actorVATRegistrationNumber: actorVATRegistrationNumber,
+                actorCompanyRegistrationNumber: actorCompanyRegistrationNumber,
+                actorTypeID:actorTypeID,
+                actorStatusID:actorStatusID,
+                OrganisationID: OrganisationID
+            },
+            success: function(kyc_response) {
+                //console.log(kyc_response);
+                if (kyc_response.status == 1) {
+                    var actorID = kyc_response.lastInsertId;
+
+                    $.ajax({
+                        url: "/api/actorcontact",
+                        type: "POST",
+                        data: {
+                            _token: _token,
+                            actorID: actorID,
+                            contactTypeID: contactTypeID,
+                            actorContactFirstName: actorContactFirstName,
+                            actorContactLastName: actorContactLastName,
+                            actorContactEmail:actorContactEmail,
+                            actorContactPhone:actorContactPhone,
+                            actorContactMobile: actorContactMobile,
+                            actorContactURL: actorContactURL,
+                            ModifiedBy: ModifiedBy
+                        },
+                        success: function(actorcontact_response) {
+                            //console.log(actorcontact_response);
+                            if (actorcontact_response.status == 1) {
+                                var actorContactID  = actorcontact_response.lastInsertId;   
+                            } else {
+                                //alert(actorcontact_response.message);
+                                Swal.fire({
+                                    position: 'center', //top-end
+                                    icon: 'error',
+                                    title: actorcontact_response.message,
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            }
+                        },
+                        error: function(actorcontact_response) {
+                            //$('#subscriberName-error').text(actorcontact_response.responseJSON.errors.subscriberName);  
+                        }
+                    });     
+
+                    $.ajax({
+                        url: "/api/actoraddress",
+                        type: "POST",
+                        data: {
+                            _token: _token,
+                            actorID: actorID,
+                            addressTypeID: addressTypeID,
+                            actorAddressStreet: actorAddressStreet,
+                            actorAddressStreetNumber: actorAddressStreetNumber,
+                            actorAddressPostalCode:actorAddressPostalCode,
+                            actorAddressCity:actorAddressCity,
+                            countryID: countryID,
+                            userAddressAdditionalAddressLines: userAddressAdditionalAddressLines,
+                            ModifiedBy: ModifiedBy
+                        },
+                        success: function(actoraddress_response) {
+                            //console.log(actoraddress_response);
+                            if (actoraddress_response.status == 1) {
+                                var actorContactID  = actoraddress_response.lastInsertId;   
+                            } else {
+                                //alert(actoraddress_response.message);
+                                Swal.fire({
+                                    position: 'center', //top-end
+                                    icon: 'error',
+                                    title: actoraddress_response.message,
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            }
+                        },
+                        error: function(actoraddress_response) {
+                            //$('#subscriberName-error').text(actoraddress_response.responseJSON.errors.subscriberName);  
+                        }
+                    }); 
+
+                    Swal.fire({
+                        position: 'center', //top-end
+                        icon: 'success',
+                        title: kyc_response.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                    location.reload();
+
+
+                } else {
+                    //alert(kyc_response.message);
+                    Swal.fire({
+                        position: 'center', //top-end
+                        icon: 'error',
+                        title: kyc_response.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                }
+            },
+            error: function(kyc_response) {
+                //$('#subscriberName-error').text(kyc_response.responseJSON.errors.subscriberName);  
+            }
+        });
+
+        //ajax code end
+    } //end of function 
+
+
+    $(document).on('click', '.client-edit-button', function(e) {
+
+        let actorID                             = $(this).data('actorid');
+        let actorName                           = $(this).data('actorname');
+        let actorCreationDateTime               = $(this).data('actorcreationdatetime');
+        let actorDateTimeLastUpdated            = $(this).data('actordatetimelastupdated');
+        let actorCompanyRegistrationNumber      = $(this).data('actorcompanyregistrationnumber');
+        let actorVATRegistrationNumber          = $(this).data('actorvatregistrationnumber');
+
+        let actorTypeID                         = $(this).data('actortypeid');
+        let actorStatusID                       = $(this).data('actorstatusid');
+        let OrganisationID                      = $(this).data('organisationid');
+        let actorTypeDescription                = $(this).data('actortypedescription');
+        let actorStatusDescription              = $(this).data('actorstatusdescription');
+        let actorContactID                      = $(this).data('actorcontactid');
+        let contactTypeID                       = $(this).data('contacttypeid');
+
+        let actorContactFirstName               = $(this).data('actorcontactfirstname');
+        let actorContactLastName                = $(this).data('actorcontactlastname');
+        let actorContactEmail                   = $(this).data('actorcontactemail');
+        let actorContactPhone                   = $(this).data('actorcontactphone');
+        let actorContactMobile                  = $(this).data('actorcontactmobile');
+        let actorContactURL                     = $(this).data('actorcontacturl');
+        let modifiedDateTime                    = $(this).data('modifieddatetime');
+        let ModifiedBy                          = $(this).data('modifiedby');
+
+        let actorAddressID                      = $(this).data('actoraddressid');
+        let addressTypeID                       = $(this).data('addresstypeid');
+        let actorAddressStreet                  = $(this).data('actoraddressstreet');
+        let actorAddressStreetNumber            = $(this).data('actoraddressstreetnumber');
+        let actorAddressPostalCode              = $(this).data('actoraddresspostalcode');
+
+        let actorAddressCity                    = $(this).data('actoraddresscity');
+        let countryID                           = $(this).data('countryid');
+        let userAddressAdditionalAddressLines   = $(this).data('useraddressadditionaladdresslines');
+
+        e.preventDefault();
+        btn = this;
+
+        $('#actorID_to_edit').val(actorID);
+
+        $("#edit_OrganisationID").val(OrganisationID);
+        $("#edit_actorTypeID").val(actorTypeID);
+        $("#edit_actorName").val(actorName);
+        $("#edit_actorVATRegistrationNumber").val(actorVATRegistrationNumber);
+        $("#edit_actorCompanyRegistrationNumber").val(actorCompanyRegistrationNumber);
+        $("#edit_addressTypeID").val(addressTypeID).change();
+        $("#edit_actorAddressStreet").val(actorAddressStreet);
+        $("#edit_actorAddressStreetNumber").val(actorAddressStreetNumber);
+
+        $("#edit_userAddressAdditionalAddressLines").val(userAddressAdditionalAddressLines);
+        $("#edit_actorAddressPostalCode").val(actorAddressPostalCode);
+        $("#edit_actorAddressCity").val(actorAddressCity);
+        $("#edit_countryID").val(countryID).change();;
+        $("#edit_contactTypeID").val(contactTypeID).change();;
+        $("#edit_actorContactFirstName").val(actorContactFirstName);
+        $("#edit_actorContactLastName").val(actorContactLastName);
+        $("#edit_actorContactEmail").val(actorContactEmail);
+
+        $("#edit_actorContactPhone").val(actorContactPhone);
+        $("#edit_actorContactMobile").val(actorContactMobile);
+        $("#edit_actorContactURL").val(actorContactURL);
+        $("#edit_modifiedBy").val(modifiedBy);
+        $("#edit_actorStatusID").val(actorStatusID);
+
+        $("#edit_actorContactID").val(actorContactID);
+        $("#edit_actorAddressID").val(actorAddressID);
+
+
+    });
+
+    function update_actor() { //function start
+
+        //return false;
+        var _token = document.getElementsByName('_token')[0].value; //for laravel authentication 
+        var actorID                                 = $("#actorID_to_edit").val();
+        var OrganisationID                          = $("#edit_OrganisationID").val();
+        var actorTypeID                             = $("#edit_actorTypeID").val();
+        var actorName                               = $("#edit_actorName").val();
+        var actorVATRegistrationNumber              = $("#edit_actorVATRegistrationNumber").val();
+        var actorCompanyRegistrationNumber          = $("#edit_actorCompanyRegistrationNumber").val();
+        var addressTypeID                           = $("#edit_addressTypeID").val();
+        var actorAddressStreet                      = $("#edit_actorAddressStreet").val();
+        var actorAddressStreetNumber                = $("#edit_actorAddressStreetNumber").val();
+
+        var userAddressAdditionalAddressLines       = $("#edit_userAddressAdditionalAddressLines").val();
+        var actorAddressPostalCode                  = $("#edit_actorAddressPostalCode").val();
+        var actorAddressCity                        = $("#edit_actorAddressCity").val();
+        var countryID                               = $("#edit_countryID").val();
+        var contactTypeID                           = $("#edit_contactTypeID").val();
+        var actorContactFirstName                   = $("#edit_actorContactFirstName").val();
+        var actorContactLastName                    = $("#edit_actorContactLastName").val();
+        var actorContactEmail                       = $("#edit_actorContactEmail").val();
+
+        var actorContactPhone                       = $("#edit_actorContactPhone").val();
+        var actorContactMobile                      = $("#edit_actorContactMobile").val();
+        var actorContactURL                         = $("#edit_actorContactURL").val();
+        var modifiedBy                              = $("#edit_modifiedBy").val();
+        var actorStatusID                           = $("#edit_actorStatusID").val();
+        var ModifiedBy                              = modifiedBy;
+
+        var actorContactID                          = $("#edit_actorContactID").val();
+        var actorAddressID                          = $("#edit_actorAddressID").val();
+
+        
+        //Post to the server to handle the changes     
+        //ajax code start
+        $.ajax({
+            url: "/api/actor",
+            type: "PUT",
+            data: {
+                _token: _token,
+                actorID: actorID,
+                actorName: actorName,
+                actorVATRegistrationNumber: actorVATRegistrationNumber,
+                actorCompanyRegistrationNumber: actorCompanyRegistrationNumber,
+                actorTypeID:actorTypeID,
+                actorStatusID:actorStatusID,
+                OrganisationID: OrganisationID
             },
             success: function(kyc_response) {
                 //console.log(kyc_response);
                 if (kyc_response.status == 1) {
                     //alert(kyc_response.message);
+
+                    $.ajax({
+                        url: "/api/actorcontact",
+                        type: "PUT",
+                        data: {
+                            _token: _token,
+                            actorContactID:actorContactID,
+                            actorID: actorID,
+                            contactTypeID: contactTypeID,
+                            actorContactFirstName: actorContactFirstName,
+                            actorContactLastName: actorContactLastName,
+                            actorContactEmail:actorContactEmail,
+                            actorContactPhone:actorContactPhone,
+                            actorContactMobile: actorContactMobile,
+                            actorContactURL: actorContactURL,
+                            ModifiedBy: ModifiedBy
+                        },
+                        success: function(actorcontact_response) {
+                            //console.log(actorcontact_response);
+                            if (actorcontact_response.status == 1) {
+                                   
+                            } else {
+                                //alert(actorcontact_response.message);
+                                Swal.fire({
+                                    position: 'center', //top-end
+                                    icon: 'error',
+                                    title: actorcontact_response.message,
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            }
+                        },
+                        error: function(actorcontact_response) {
+                            //$('#subscriberName-error').text(actorcontact_response.responseJSON.errors.subscriberName);  
+                        }
+                    });     
+
+                    $.ajax({
+                        url: "/api/actoraddress",
+                        type: "PUT",
+                        data: {
+                            _token: _token,
+                            actorAddressID:actorAddressID,
+                            actorID: actorID,
+                            addressTypeID: addressTypeID,
+                            actorAddressStreet: actorAddressStreet,
+                            actorAddressStreetNumber: actorAddressStreetNumber,
+                            actorAddressPostalCode:actorAddressPostalCode,
+                            actorAddressCity:actorAddressCity,
+                            countryID: countryID,
+                            userAddressAdditionalAddressLines: userAddressAdditionalAddressLines,
+                            ModifiedBy: ModifiedBy
+                        },
+                        success: function(actoraddress_response) {
+                            //console.log(actoraddress_response);
+                            if (actoraddress_response.status == 1) {
+                                  
+                            } else {
+                                //alert(actoraddress_response.message);
+                                Swal.fire({
+                                    position: 'center', //top-end
+                                    icon: 'error',
+                                    title: actoraddress_response.message,
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            }
+                        },
+                        error: function(actoraddress_response) {
+                            //$('#subscriberName-error').text(actoraddress_response.responseJSON.errors.subscriberName);  
+                        }
+                    }); 
+
                     Swal.fire({
                         position: 'center', //top-end
                         icon: 'success',
@@ -1573,19 +1790,30 @@
     } //end of function 
 
 
-    function delete_user() { //function start
+    $(document).on('click', '.client-delete-button', function(e) {
 
-        var _token = document.getElementsByName('_token')[0].value; //for laravel authentication 
-        var userID = $('#userID_to_delete').val();
+        let actorID     = $(this).data('actorid');
+        let actorName   = $(this).data('actorname');
+        e.preventDefault();
+        btn = this;
+        $('#actorID_to_delete').val(actorID);
+        $('#modalActorDelete').find('.modal-body p').text('Weet u zeker dat u ' + actorName + ' wilt verwijderen?');
+
+    });
+
+    function delete_actor() { //function start
+
+        var _token  = document.getElementsByName('_token')[0].value; //for laravel authentication 
+        var actorID = $('#actorID_to_delete').val();
         //console.log("_token=>"+_token+"&userID=>"+userID);
         //Post to the server to handle the changes     
         //ajax code start
         $.ajax({
-            url: "/api/user",
+            url: "/api/actor",
             type: "DELETE",
             data: {
                 _token: _token,
-                userID: userID
+                actorID: actorID
             },
             success: function(kyc_response) {
                 //console.log(kyc_response);
@@ -1617,158 +1845,11 @@
         //ajax code end
     } //end of function 
 
-    function moxoget_shopifypages() { //function start
-        //return false;
-        var _token = document.getElementsByName('_token')[0].value; //for laravel authentication 
-        var moxoab_Where_To_Display = $("#moxoab_Where_To_Display").val();
-        var moxoab_Selected_Pages = $("#moxoab_Selected_Pages").val();
-        //console.log("_token=>"+_token+"&moxoab_Where_To_Display=>"+moxoab_Where_To_Display+"&moxoab_Selected_Pages=>"+moxoab_Selected_Pages);
-        //Post to the server to handle the changes     
-        //ajax code start
-        $.ajax({
-            url: "/moxoget_shopifypages", ///abapp_live/saveNotificationFieldsOrder
-            type: "POST",
-            data: {
-                _token: _token,
-                moxoab_Where_To_Display: moxoab_Where_To_Display,
-                moxoab_Selected_Pages: moxoab_Selected_Pages,
-            },
-            success: function(moxoresponse) { //console.log(moxoresponse);
-                //console.log(moxoresponse.moxodatalist);
-                if (moxoresponse.status == 1) {
-                    var moxodatalist = moxoresponse.moxodatalist;
-                    var moxoforlooplength = moxodatalist.length;
-                    var moxosrno = 1;
-                    var moxoListDiv = '<option value="all">All</option>';
-                    for (var moxoindex1 = 0; moxoindex1 < moxoforlooplength; moxoindex1++) {
-
-                        var moxo_shopifypageId = '';
-                        var moxo_shopifypageTitle = '';
-                        if (moxodatalist[moxoindex1]['title'] != null) {
-                            moxo_shopifypageId = moxodatalist[moxoindex1]['id'];
-                            moxo_shopifypageTitle = moxodatalist[moxoindex1]['title'];
-                            moxo_shopifypagehandle = moxodatalist[moxoindex1]['handle'];
-                        }
-                        //console.log("moxo_shopifypageTitle="+moxo_shopifypageTitle);
-                        moxoListDiv += '<option value="' + moxo_shopifypagehandle + '">' + moxo_shopifypageTitle + '</option>';
-
-                    }
-                    $("#moxoab_Display_Page").html(moxoListDiv);
-
-                }
-            },
-            error: function(moxoresponse) {
-                //$('#subscriberName-error').text(moxoresponse.responseJSON.errors.subscriberName);  
-            }
-        });
-        //ajax code end
-    } //end of function 
+    
 
 
 
-
-    $(document).on('click', '.delete-btn', function(e) {
-
-        let url = $(this).data('url');
-        e.preventDefault();
-        btn = this;
-        //if(confirm("Are You Sure? You Want to delete it!") == true){
-        //    location.href= url;
-        //}
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your data has been deleted.',
-                    'success'
-                );
-                //location.href= url;
-            }
-        });
-
-    });
-
-    $(document).on('click', '.edit_btn', function(e) {
-
-        let url = $(this).data('url');
-        e.preventDefault();
-        btn = this;
-        //if(confirm("Are You Sure? You Want to Edit it!") == true){
-        location.href = url;
-        //}
-    });
-
-
-    $(document).on('change', '.moxoab_status_toggle', function(e) {
-        //preloader
-        $(".preloader").fadeIn("slow");
-        var announcementbarid = $(this).data('announcementbarid');
-
-        if ($(this).is(":checked")) {
-            var moxoab_status = 1;
-        } else {
-            var moxoab_status = 0;
-        }
-
-        var _token = document.getElementsByName('_token')[0].value; //for laravel 
-
-        //alert("announcementbarid="+announcementbarid+"&_token"+_token);
-        if (announcementbarid > 0) {
-            //Post to the server to handle the changes   
-            //ajax code start
-            $.ajax({
-                url: "/moxopost_abstatus",
-                type: "POST",
-                data: {
-                    _token: _token,
-                    announcementbarid: announcementbarid,
-                    moxoab_status: moxoab_status,
-                },
-                success: function(response) {
-                    console.log(response);
-                    if (response) {
-                        //console.log(response.data);
-                        //alert(response.message);
-
-                        Swal.fire({
-                            position: 'center', //top-end
-                            icon: 'success',
-                            title: response.message,
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-
-                        $(".preloader").fadeOut("slow"); //preloader end  
-                    }
-                },
-                error: function(response) {
-                    //$('#subscriberName-error').text(response.responseJSON.errors.subscriberName);  
-                }
-            });
-            //ajax code end
-        } //end of if 
-
-    });
-
-    /*
-    $(document).on('click', '.add_btn', function( e ){
-
-        let url = $(this).data('url');
-        e.preventDefault();
-        btn = this;
-        location.href= url; 
-
-    });  
-    */
+    
 </script>
 <!-- shahadat code end -->
 </body>

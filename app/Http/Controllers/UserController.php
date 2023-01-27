@@ -29,11 +29,17 @@ class UserController extends Controller
     public function customers()
     {
         
-        $roles 	= DB::table('role')->select('role.roleID', 'role.roleDescription')->get();
+        $countries 	    = DB::table('countries')->select('countries.countryID', 'countries.countryName', 'countries.countryISO2Code')->get();
+        $addresstypes 	= DB::table('addresstype')->select('addresstype.addressTypeID', 'addresstype.addressTypeDescription')->get();
+        $contacttypes 	= DB::table('contacttype')->select('contacttype.contactTypeID', 'contacttype.contactTypeDescription')->get();
 
+        $actorPageTitleSingle   = "Klant";
+        $actorPageTitleMulti    = "Klanten";    
+        $actorTypeID    = 1;//Customers(1), Suppliers(2)
         $data 	= DB::table('actor')
                 ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','actorcontact.*','actoraddress.*')
-                //->where('userDeletedFlag', '=', 0)
+                ->where('actor.actorDeletedFlag', "0")
+                ->where('actor.actorTypeID', '=', $actorTypeID)
                 ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
                 ->join('actorstatus','actorstatus.actorStatusID','=','actor.actorStatusID')
                 ->join('actorcontact','actorcontact.actorID','=','actor.actorID')
@@ -41,7 +47,31 @@ class UserController extends Controller
                 ->orderBy('actorName', 'asc')
                 ->get();
         //dd($data);
-        return view('customers', [ 'clients' => $data, 'roles' => $roles ]);
+        return view('customers', [ 'clients' => $data, 'actorTypeID' => $actorTypeID, 'countries' => $countries, 'addresstypes' => $addresstypes, 'contacttypes' => $contacttypes, 'actorPageTitleSingle' => $actorPageTitleSingle, 'actorPageTitleMulti' => $actorPageTitleMulti ]);
+    }//end of function
+
+    public function suppliers()
+    {
+        
+        $countries 	    = DB::table('countries')->select('countries.countryID', 'countries.countryName', 'countries.countryISO2Code')->get();
+        $addresstypes 	= DB::table('addresstype')->select('addresstype.addressTypeID', 'addresstype.addressTypeDescription')->get();
+        $contacttypes 	= DB::table('contacttype')->select('contacttype.contactTypeID', 'contacttype.contactTypeDescription')->get();
+
+        $actorPageTitleSingle   = "Leverancier";
+        $actorPageTitleMulti    = "Leveranciers"; 
+        $actorTypeID    = 2;//Customers(1), Suppliers(2)
+        $data 	= DB::table('actor')
+                ->select('actor.*','actortype.actorTypeDescription','actorstatus.actorStatusDescription','actorcontact.*','actoraddress.*')
+                ->where('actor.actorDeletedFlag', "0")
+                ->where('actor.actorTypeID', '=', $actorTypeID)
+                ->join('actortype','actortype.actorTypeID','=','actor.actorTypeID')
+                ->join('actorstatus','actorstatus.actorStatusID','=','actor.actorStatusID')
+                ->join('actorcontact','actorcontact.actorID','=','actor.actorID')
+                ->join('actoraddress','actoraddress.actorID','=','actor.actorID')
+                ->orderBy('actorName', 'asc')
+                ->get();
+        //dd($data);
+        return view('customers', [ 'clients' => $data, 'actorTypeID' => $actorTypeID, 'countries' => $countries, 'addresstypes' => $addresstypes, 'contacttypes' => $contacttypes, 'actorPageTitleSingle' => $actorPageTitleSingle, 'actorPageTitleMulti' => $actorPageTitleMulti  ]);
     }//end of function
 
      

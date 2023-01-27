@@ -37,7 +37,7 @@
                     <a href="{{URL::to('/customers')}}"><i class="fa fa-user-tie"></i>Klanten</a>
                 </li>
                 <li class="menu-item">
-                    <a href="leveranciers.html"><i class="fa-solid fa-truck"></i>Leveranciers</a>
+                    <a href="{{URL::to('/suppliers')}}"><i class="fa-solid fa-truck"></i>Leveranciers</a>
                 </li>
                 <li class="menu-item">
                     <a href="userprofile.html"><i class="fa fa-address-card"></i>Profiel</a>
